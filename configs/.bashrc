@@ -40,16 +40,17 @@ alias gco='git checkout'
 alias gl='git log --oneline'
 alias gb='git checkout -b'
 alias gd='git diff'
+alias gpo='git push origin'
 
 alias ..='cd ..;pwd'
 alias ...='cd ../..;pwd'
 alias ....='cd ../../..;pwd'
-alias de='cd ~/Desktop'
-alias do='cd ~/Downloads'
-alias doc='cd ~/Documents'
-alias pic='cd ~/Pictures'
+alias desk='cd ~/Desktop'
+alias down='cd ~/Downloads'
+alias docu='cd ~/Documents'
+alias pict='cd ~/Pictures'
 
-alias base='ssh root@base.hpc.taltech.ee'
+alias sshbase='ssh root@base.hpc.taltech.ee'
 
 function largestfiles() {
     du -h -x -s -- * | sort -r -h | head -20;
@@ -86,4 +87,4 @@ function git_init() {
     fi
 }
 
-eval $(keychain --eval ~/.ssh/*)
+eval $(keychain --eval --quiet ~/.ssh/*)

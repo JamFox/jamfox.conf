@@ -1,9 +1,12 @@
 ---
-# Init assumes sudoer user jamfox
-# To update all configs, run with -t "conf"
+# To init a new machine, run with "-t init"
+# To update packages, run with "-t pacman"
+# To update bashrc confs, run with "-t bashrc"
+# To update SpaceVim conf, run with "-t spacevim"
   - name: "Set up an machine for work"
     hosts: localhost
-    vars: 
+    vars:
+     # Change this to appropriate user
      user: jamfox
     connection: local 
     tasks:
