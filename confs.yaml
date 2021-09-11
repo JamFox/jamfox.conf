@@ -65,8 +65,18 @@
         - bashrc
         - init
 
-    - name: "Source .bashrc"
-      shell: source ~/.bashrc
+    - name: "Copy .bash_profile"
+      copy:       
+        dest: ~/
+        src: configs/.bash_profile
+      tags:
+        - bashrc
+        - init
+
+    - name: "Source .bashrc and .bash_profile"
+      shell: |
+        source ~/.bashrc
+        source ~/.bash_profile
       tags:
         - bashrc
         - init
