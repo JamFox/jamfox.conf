@@ -42,6 +42,8 @@ alias gb='git checkout -b'
 alias gd='git diff'
 alias gpo='git push origin'
 
+alias apb='ansible-playbook'
+
 alias ..='cd ..;pwd'
 alias ...='cd ../..;pwd'
 alias ....='cd ../../..;pwd'
