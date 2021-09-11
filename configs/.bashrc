@@ -86,4 +86,4 @@ function git_init() {
     fi
 }
 
-eval $(keychain --eval --quiet --noask ~/.ssh/*)
+eval $(keychain --eval --quiet --noask ~/.ssh/jfl_ed)
