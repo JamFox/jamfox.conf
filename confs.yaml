@@ -33,7 +33,8 @@
           - make
           - valgrind
           - gdb
-          - openssh 
+          - openssh
+          - keychain
           - git
           - ansible 
           - telegram-desktop
