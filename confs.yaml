@@ -1,0 +1,85 @@
+---
+# Init assumes sudoer user jamfox
+# To update all configs, run with -t "conf"
+  - name: "Set up an machine for work"
+    hosts: localhost
+    vars: 
+     user: jamfox
+    connection: local 
+    tasks:
+
+    - name: "sudo pacman -Syu"
+      become: true
+      pacman:
+        update_cache: yes
+        upgrade: yes
+      tags: 
+        - init
+        - pacman
+
+    - name: "pacman packages install"
+      become: true
+      pacman:
+        update_cache: yes
+        name:
+          - vim
+          - neovim
+          - mlocate
+          - wget
+          - curl 
+          - vlc
+          - qbittorrent
+          - python
+          - make
+          - valgrind
+          - gdb
+          - openssh 
+          - git
+          - ansible 
+          - telegram-desktop
+          - signal-desktop
+          - discord
+          - thunderbird
+          - firefox
+        state: latest
+      tags: 
+        - init
+        - pacman
+
+    - name: "Set up yay for AUR"
+      become: true
+      shell: |
+        git clone https://aur.archlinux.org/yay-git.git
+        "chown -R {{ user }}:{{ user }} ./yay-git"
+        cd yay-git
+        makepkg -si
+      tags: 
+       - init
+
+    - name: "Copy .bashrc"
+      copy:       
+        dest: ~/
+        src: configs/.bashrc
+      tags:
+        - bashrc
+        - init
+
+    - name: "Source .bashrc"
+      shell: source ~/.bashrc
+      tags:
+        - bashrc
+        - init
+
+    - name: "Install SpaceVim"
+      shell: curl -sLf https://spacevim.org/install.sh | bash
+      tags:
+        - init
+
+    - name: "Copy SpaceVim toml config"
+      copy: 
+        dest: ~/.SpaceVim.d/
+        src: configs/.SpaceVim.d/init.toml
+      tags:
+        - spacevim
+        - init
+
