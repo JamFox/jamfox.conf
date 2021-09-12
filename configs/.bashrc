@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export PS1="\[\033[38;5;195m\](\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\]\[\033[38;5;217m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;216m\]\h\[$(tput sgr0)\]:\w\n> \[$(tput sgr0)\]"
+export PS1="\[\033[38;5;217m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;216m\]\h\[$(tput sgr0)\]: \[$(tput sgr0)\]\[\033[38;5;159m\](\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\] \w\n> \[$(tput sgr0)\]"
 
 HISTTIMEFORMAT="%F %T "
 HISTCONTROL=ignoredups
