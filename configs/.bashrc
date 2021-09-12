@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+export PS1="\[\033[38;5;195m\](\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\]\[\033[38;5;217m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;216m\]\h\[$(tput sgr0)\]:\w\n> \[$(tput sgr0)\]"
 
 HISTTIMEFORMAT="%F %T "
 HISTCONTROL=ignoredups
@@ -64,14 +64,6 @@ function git_branch() {
         printf "%s" "($(git branch 2> /dev/null | awk '/\*/{print $2}'))";
     fi
 }
-
-# Set the prompt.
-
-function bash_prompt(){
-    PS1='${debian_chroot:+($debian_chroot)}'${blu}'$(git_branch)'${pur}' \W'${grn}' \$ '${clr}
-}
-
-bash_prompt
 
 function hg() {
     history | grep "$1";
