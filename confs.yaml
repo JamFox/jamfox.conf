@@ -2,6 +2,7 @@
 # To init a new machine, run with "-t init"
 # To update packages, run with "-t pacman"
 # To update bashrc confs, run with "-t bashrc"
+# To update tmux confs, run with "-t tmux"
 # To update SpaceVim conf, run with "-t spacevim"
   - name: "Set up an machine for work"
     hosts: localhost
@@ -45,6 +46,9 @@
           - discord
           - thunderbird
           - firefox
+          - libffi
+          - qmk
+          - tmux
         state: latest
       tags: 
         - init
@@ -59,6 +63,14 @@
         makepkg -si
       tags: 
        - init
+
+    - name: "Copy .tmux.conf"
+      copy:       
+        dest: ~/
+        src: configs/.tmux.conf
+      tags:
+        - tmux  
+        - init
 
     - name: "Copy .bashrc"
       copy:       
