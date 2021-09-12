@@ -83,3 +83,4 @@ function git_init() {
 }
 
 eval $(keychain --eval --quiet ~/.ssh/*)
+neofetch
