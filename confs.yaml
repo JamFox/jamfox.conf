@@ -1,5 +1,6 @@
 ---
 # To init a new machine, run with "-t init"
+# To update all confs, run with "-t up"
 # To update packages, run with "-t pacman"
 # To update bashrc confs, run with "-t bashrc"
 # To update tmux confs, run with "-t tmux"
@@ -20,6 +21,7 @@
       tags: 
         - init
         - pacman
+        - up
 
     - name: "pacman packages install"
       become: true
@@ -71,6 +73,7 @@
       tags:
         - tmux  
         - init
+        - up
 
     - name: "Copy .bashrc"
       copy:       
@@ -79,6 +82,7 @@
       tags:
         - bashrc
         - init
+        - up
 
     - name: "Copy .bash_profile"
       copy:       
@@ -87,14 +91,7 @@
       tags:
         - bashrc
         - init
-
-    - name: "Source .bashrc and .bash_profile"
-      shell: |
-        source ~/.bashrc
-        source ~/.bash_profile
-      tags:
-        - bashrc
-        - init
+        - up
 
     - name: "Install SpaceVim"
       shell: curl -sLf https://spacevim.org/install.sh | bash
@@ -108,4 +105,5 @@
       tags:
         - spacevim
         - init
+        - up
 
