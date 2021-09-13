@@ -61,7 +61,7 @@
         git -C ~/ clone https://aur.archlinux.org/yay-git.git
         "chown -R {{ user }}:{{ user }} ~/yay-git"
         cd ~/yay-git
-        makepkg -si
+        makepkg -si --noconfirm
       tags: 
        - init
 
