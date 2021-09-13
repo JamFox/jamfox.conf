@@ -57,7 +57,6 @@
         - pacman
 
     - name: "Set up yay for AUR"
-      become: true
       shell: |
         git clone https://aur.archlinux.org/yay-git.git
         "chown -R {{ user }}:{{ user }} ./yay-git"
