@@ -5,6 +5,7 @@
 # To update bashrc confs, run with "-t bashrc"
 # To update tmux confs, run with "-t tmux"
 # To update SpaceVim conf, run with "-t spacevim"
+# To update GRUB conf, run with "-t grub"
   - name: "Set up an machine for work"
     hosts: localhost
     vars:
@@ -106,4 +107,13 @@
         - spacevim
         - init
         - up
+        
+    - name: "Enable GRUB os-prober"
+      become: true
+      shell: |
+        echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+      tags:
+        - init
+        - grub
 
