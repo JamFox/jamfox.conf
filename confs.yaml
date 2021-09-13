@@ -59,8 +59,8 @@
     - name: "Set up yay for AUR"
       shell: |
         git clone https://aur.archlinux.org/yay-git.git
-        "chown -R {{ user }}:{{ user }} ./yay-git"
-        cd yay-git
+        "chown -R {{ user }}:{{ user }} ~/yay-git"
+        cd ~/yay-git
         makepkg -si
       tags: 
        - init
