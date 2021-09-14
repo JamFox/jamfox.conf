@@ -32,6 +32,9 @@
           - vim
           - neovim
           - mlocate
+          - multitail
+          - tree
+          - ufw
           - wget
           - curl 
           - vlc
