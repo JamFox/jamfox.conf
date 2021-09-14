@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 export PS1="\[\033[38;5;217m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;216m\]\h\[$(tput sgr0)\]: \[$(tput sgr0)\]\[\033[38;5;159m\](\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\[$(tput sgr0)\] \w\n> \[$(tput sgr0)\]"
+export EDITOR=vim
 
 HISTTIMEFORMAT="%F %T "
 HISTCONTROL=ignoredups
