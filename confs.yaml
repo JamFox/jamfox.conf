@@ -59,6 +59,7 @@
       tags: 
         - init
         - pacman
+        - up
 
     - name: "Set up yay for AUR"
       shell: |
