@@ -1,4 +1,6 @@
 ---
+
+# This playbook assumes Arch EndeavourOS 
 # To init a new machine, run with "-t init"
 # To update all confs, run with "-t up"
 # To update packages, run with "-t pacman"
@@ -6,6 +8,7 @@
 # To update tmux confs, run with "-t tmux"
 # To update SpaceVim conf, run with "-t spacevim"
 # To update GRUB conf, run with "-t grub"
+
   - name: "Set up an machine for work"
     hosts: localhost
     vars:
@@ -52,6 +55,9 @@
           - discord
           - thunderbird
           - firefox
+          - bluez
+          - bluez-utils
+          - pulseaudio-bluetooth
           - libffi
           - qmk
           - tmux
@@ -120,4 +126,14 @@
       tags:
         - init
         - grub
+        
+    - name: "Enable Bluetooth"
+      become: true
+      shell: |
+        modprobe btusb
+        sudo systemctl enable bluetooth
+        sudo systemctl start bluetooth
+      tags:
+        - init
+        - bt
 
