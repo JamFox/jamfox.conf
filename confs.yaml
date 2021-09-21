@@ -13,7 +13,7 @@
     hosts: localhost
     vars:
      # Change this to appropriate user
-     user: jamfox
+     user: katurv
     connection: local 
     tasks:
 
@@ -61,6 +61,10 @@
           - libffi
           - qmk
           - tmux
+          - ipmitool
+          - arduino
+          - arduino-cli
+          - arduino-avr-core 
         state: latest
       tags: 
         - init
@@ -136,4 +140,14 @@
       tags:
         - init
         - bt
+        
+    - name: "Set up arduino"
+      become: true
+      shell: |
+        modprobe cdc_acm
+        "usermod -aG uucp {{ user }}"
+      tags:
+        - init
+        - arduino
+        
 
