@@ -65,11 +65,54 @@
           - arduino
           - arduino-cli
           - arduino-avr-core 
+          - ccid
+          - acsccid
         state: latest
       tags: 
         - init
         - pacman
         - up
+        
+    
+    - name: Install package_name_1 and package_name_2 using yay
+      kewlfft.aur.aur:
+        use: yay
+        name:
+          - spotify
+          - qdigidoc4
+          - chrome-token-signing
+          - esteidpkcs11loader
+          - xml-security-c
+          - fritzing
+
+    - name: Upgrade the system using yay, only act on AUR packages.
+      kewlfft.aur.aur:
+        upgrade: yes
+        use: yay
+        aur_only: yes
+        
+    - name: "ansible AUR support"
+      shell: |
+        ansible-galaxy collection install -r requirements.yml
+      tags: 
+       - init
+       
+    - name: Create the `aur_builder` user
+      ansible.builtin.user:
+        name: aur_builder
+        create_home: yes
+        group: wheel
+      tags: 
+       - init
+        
+    - name: Allow the `aur_builder` user to run `sudo pacman` without a password
+      ansible.builtin.lineinfile:
+        path: /etc/sudoers.d/11-install-aur_builder
+        line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+        create: yes
+        validate: 'visudo -cf %s'
+      tags: 
+       - init
 
     - name: "Set up yay for AUR"
       shell: |
@@ -150,4 +193,11 @@
         - init
         - arduino
         
-
+    - name: "Set up digidoc"
+      become: true
+      shell: |
+        systemctl enable pcscd.socket
+        systemctl start pcscd.socket
+      tags:
+        - init
+        - digidoc
