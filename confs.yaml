@@ -67,6 +67,7 @@
           - arduino-avr-core 
           - ccid
           - acsccid
+          - steam
         state: latest
       tags: 
         - init
@@ -74,9 +75,11 @@
         - up
         
     
-    - name: Install package_name_1 and package_name_2 using yay
-      kewlfft.aur.aur:
+    - name: Install AUR packages using yay
+      aur:
         use: yay
+        state: present
+        aur_only: yes
         name:
           - spotify
           - qdigidoc4
@@ -90,12 +93,6 @@
         upgrade: yes
         use: yay
         aur_only: yes
-        
-    - name: "ansible AUR support"
-      shell: |
-        ansible-galaxy collection install -r requirements.yml
-      tags: 
-       - init
        
     - name: Create the `aur_builder` user
       ansible.builtin.user:
