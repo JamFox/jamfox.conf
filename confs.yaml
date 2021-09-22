@@ -77,9 +77,6 @@
     
     - name: Install AUR packages using yay
       aur:
-        use: yay
-        state: present
-        aur_only: yes
         name:
           - spotify
           - qdigidoc4
@@ -87,6 +84,10 @@
           - esteidpkcs11loader
           - xml-security-c
           - fritzing
+        use: yay
+        state: present
+        aur_only: yes
+        
 
     - name: Upgrade the system using yay, only act on AUR packages.
       kewlfft.aur.aur:
