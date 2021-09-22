@@ -76,7 +76,7 @@
         
     
     - name: Install AUR packages using yay
-      aur:
+      kewlfft.aur.aur:
         name:
           - spotify
           - qdigidoc4
