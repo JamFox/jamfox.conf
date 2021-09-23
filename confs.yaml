@@ -194,7 +194,7 @@
     - name: "Set up arduino"
       become: true
       shell: |
-        modprobe cdc_acm
+        #modprobe cdc_acm
         "usermod -aG uucp {{ user }}"
       tags:
         - init
