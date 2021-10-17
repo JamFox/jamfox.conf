@@ -58,6 +58,7 @@
           - ccid
           - acsccid
           - steam
+          - syncthing
         state: present
       tags: 
         - init
@@ -82,7 +83,7 @@
           - chrome-token-signing
           - esteidpkcs11loader
           - xml-security-c
-          - fritzing
+          - obsidian
         use: yay
         state: present
         aur_only: yes
