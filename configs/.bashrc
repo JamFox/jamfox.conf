@@ -112,11 +112,6 @@ alias down='cd ~/Downloads'
 alias docu='cd ~/Documents'
 alias pict='cd ~/Pictures'
 
-alias base='ssh root@base.hpc.taltech.ee'
-alias data-dev='ssh ubuntu@data-dev.taltech.ee'
-alias data='ssh ubuntu@data.taltech.ee'
-alias montunnel='ssh -L 8080:10.10.100.250:80 base.hpc.taltech.ee'
-
 # Search running processes
 alias p="ps aux | grep "
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
