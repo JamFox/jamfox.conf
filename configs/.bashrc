@@ -325,6 +325,20 @@ function whatsmyip ()
 	echo -n "External IP: " ; wget http://smart-ip.net/myip -O - -q
 }
 
+function saveit ()
+{
+        # Copy and save a file with current date
+        DATE=`date +%d%m%y`
+
+        for i in $*
+        do
+                [ -r "$i" ] || { echo Error: $i does not exist;continue ;}
+                [ -r $i.$DATE ] && { echo Error: $i.$DATE exists already;continue ;}
+                cp -p "$i" $i.$DATE || { echo Error: copy of "$i" failed;continue ;}
+                echo `basename $0`: saved "$i" to $i.$DATE
+        done
+}
+
 
 
 eval $(keychain --eval --quiet ~/.ssh/*)
