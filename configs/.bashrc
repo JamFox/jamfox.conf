@@ -91,6 +91,7 @@ alias grep='grep --color=auto'
 
 alias gs='git status'
 alias ga='git add'
+alias gap='git add -p'
 alias gaa='git add --all'
 alias gc='git commit'
 alias gac='git add --all && git commit'
@@ -99,6 +100,7 @@ alias gl='git log --oneline'
 alias gb='git checkout -b'
 alias gd='git diff'
 alias gpo='git push origin'
+alias gp='git pull'
 
 alias apb='ansible-playbook'
 
